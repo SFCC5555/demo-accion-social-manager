@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "areas_de_actuacion",
+  "info": {
+    "singularName": "area-de-actuacion",
+    "pluralName": "areas-de-actuacion",
+    "displayName": "Área de actuación",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "color": {
+      "type": "string",
+      "required": false,
+      "default": "#333"
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "banner": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "summary": {
+      "type": "text",
+      "required": true
+    }
+  }
+}
