@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_categoria_seccions",
+  "info": {
+    "displayName": "Seccion",
+    "icon": "alien"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "type 1",
+        "type 2"
+      ]
+    }
+  }
+}
