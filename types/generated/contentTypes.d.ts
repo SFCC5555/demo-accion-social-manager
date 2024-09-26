@@ -912,12 +912,6 @@ export interface ApiEntrevistaEntrevista extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    video: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
     content: Attribute.Text &
       Attribute.Required &
       Attribute.SetPluginOptions<{
@@ -926,6 +920,20 @@ export interface ApiEntrevistaEntrevista extends Schema.CollectionType {
         };
       }>;
     cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    url: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    order: Attribute.Integer &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -951,6 +959,81 @@ export interface ApiEntrevistaEntrevista extends Schema.CollectionType {
       'api::entrevista.entrevista',
       'oneToMany',
       'api::entrevista.entrevista'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiExperienciaExperiencia extends Schema.CollectionType {
+  collectionName: 'experiencias';
+  info: {
+    singularName: 'experiencia';
+    pluralName: 'experiencias';
+    displayName: 'Experiencia';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    content: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    order: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    url: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::experiencia.experiencia',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::experiencia.experiencia',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::experiencia.experiencia',
+      'oneToMany',
+      'api::experiencia.experiencia'
     >;
     locale: Attribute.String;
   };
@@ -1016,6 +1099,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::area-de-actuacion.area-de-actuacion': ApiAreaDeActuacionAreaDeActuacion;
       'api::entrevista.entrevista': ApiEntrevistaEntrevista;
+      'api::experiencia.experiencia': ApiExperienciaExperiencia;
       'api::section.section': ApiSectionSection;
     }
   }

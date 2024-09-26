@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "entrevistas",
+  "collectionName": "experiencias",
   "info": {
-    "singularName": "entrevista",
-    "pluralName": "entrevistas",
-    "displayName": "Entrevista",
-    "description": ""
+    "singularName": "experiencia",
+    "pluralName": "experiencias",
+    "displayName": "Experiencia"
   },
   "options": {
     "draftAndPublish": true
@@ -35,28 +34,19 @@
       "required": true
     },
     "cover": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
       ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
-    },
-    "url": {
+      "type": "media",
+      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
       },
-      "type": "string",
       "required": true
     },
     "order": {
@@ -66,6 +56,15 @@
         }
       },
       "type": "integer",
+      "required": true
+    },
+    "url": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
       "required": true
     }
   }
