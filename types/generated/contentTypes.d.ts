@@ -1079,6 +1079,85 @@ export interface ApiSectionSection extends Schema.CollectionType {
   };
 }
 
+export interface ApiSocialNetworkSocialNetwork extends Schema.CollectionType {
+  collectionName: 'social_networks';
+  info: {
+    singularName: 'social-network';
+    pluralName: 'social-networks';
+    displayName: 'Social Network';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    url: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    icon_class: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    Icon_image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    order: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::social-network.social-network',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::social-network.social-network',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::social-network.social-network',
+      'oneToMany',
+      'api::social-network.social-network'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1101,6 +1180,7 @@ declare module '@strapi/types' {
       'api::entrevista.entrevista': ApiEntrevistaEntrevista;
       'api::experiencia.experiencia': ApiExperienciaExperiencia;
       'api::section.section': ApiSectionSection;
+      'api::social-network.social-network': ApiSocialNetworkSocialNetwork;
     }
   }
 }
